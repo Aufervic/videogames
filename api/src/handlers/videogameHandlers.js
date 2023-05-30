@@ -4,8 +4,8 @@ const {getAllVideogames,
   createVideogame
 } = require('../controllers/videogameControllers')
 
-const getAllVideogamesHandler = (req, res) => {
-  const videogames = getAllVideogames()
+const getAllVideogamesHandler = async (req, res) => {
+  const videogames = await getAllVideogames()
   res.status(200).json(videogames)
 }
 
