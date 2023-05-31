@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     platforms: {// ['pc', 'xbox', 'play 5']
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
     image: {
@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     rating: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
   },

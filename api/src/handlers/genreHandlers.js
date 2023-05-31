@@ -1,7 +1,9 @@
 const getAllGenres = require('../controllers/getAllGenres')
 
-const getAllGenresHandler = (req, res) => {
-  res.status(200).json({message: 'Devolver los géneros'})
+const getAllGenresHandler = async (req, res) => {
+  const genres = await getAllGenres()
+  
+  res.status(200).json(genres)
 }
 
 

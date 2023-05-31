@@ -1,5 +1,5 @@
 const {getAllVideogames,
-  getVideogameByName,
+  getVideogamesByName,
   getVideogameByID,
   createVideogame
 } = require('../controllers/videogameControllers')
@@ -9,24 +9,25 @@ const getAllVideogamesHandler = async (req, res) => {
   res.status(200).json(videogames)
 }
 
-const getVideogameByNameHandler = (req, res) => {
+const getVideogameByNameHandler = async (req, res) => {
   const {name} = req.query
-  getVideogameByName(name)
-  res.status(200).json({message: 'Devolver el videojuego por nombre:' +name})
+  const videogames = await getVideogamesByName(name)
+  res.status(200).json(videogames)
 }
 
 
-const getVideogameByIDHandler = (req, res) => {
+const getVideogameByIDHandler = async (req, res) => {
   const {idVideogame} = req.params
-  getVideogameByID()
-  res.status(200).json({message: 'Devolver el videojuego con ID: '+idVideogame})
+  const videogame = await getVideogameByID(idVideogame)
+  res.status(200).json(videogame)
 }
 
 
-const createVideogameHandler = (req, res) => {
-  const {videogame} = req.body
-  createVideogame()
-  res.status(200).json({message: 'Crear videojuego ', videogame: videogame})
+const createVideogameHandler = async (req, res) => {
+  const newGame = req.body
+  const createdGame = await createVideogame(newGame)
+  
+  res.status(200).json(createdGame)
 }
 
 
